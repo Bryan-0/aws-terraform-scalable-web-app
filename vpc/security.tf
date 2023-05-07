@@ -7,12 +7,10 @@ resource "aws_security_group" "web_security_group" {
     iterator = port
 
     content {
-      cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
-      protocol         = "TCP"
-      from_port        = port.value
-      to_port          = port.value
-      security_groups  = [aws_security_group.alb_security_group.id]
+      protocol        = "TCP"
+      from_port       = port.value
+      to_port         = port.value
+      security_groups = [aws_security_group.alb_security_group.id]
     }
   }
 

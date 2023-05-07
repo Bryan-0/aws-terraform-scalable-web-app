@@ -1,4 +1,4 @@
-# Set up the VPC we will use in our scalable web app
+# Set up all custom VPC logic
 module "vpc" {
   source       = "./vpc"
   infra_region = var.infra_region
@@ -18,6 +18,7 @@ module "vpc" {
   enable_dns_hostnames = true
 }
 
+# Set up our web instances, auto-scaling group and load balancer.
 module "ec2" {
   source       = "./ec2"
   infra_region = var.infra_region
@@ -33,5 +34,20 @@ module "ec2" {
     "max_size"         = 3
     "min_size"         = 1
   }
-  instance_type = "t2.nano"
+  instance_type         = "t2.nano"
+  instance_profile_name = module.iam.s3_access_instance_profile_name
+}
+
+# Set up our generic web bucket, in case we want to store any type of file to later be retrieved.
+module "s3" {
+  source       = "./s3"
+  infra_region = var.infra_region
+
+  # bucket_name = "<custom bucket name>" (If not defined, we will generate one unique randomly named)
+}
+
+# Policies & Roles Setup
+module "iam" {
+  source             = "./iam"
+  web_app_bucket_arn = module.s3.web_app_bucket_arn
 }

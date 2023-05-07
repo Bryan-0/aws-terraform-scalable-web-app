@@ -24,3 +24,6 @@ variable "auto_scaling_conf" {
 variable "instance_type" {
   type = string
 }
+variable "instance_profile_name" {
+  type = string
+}

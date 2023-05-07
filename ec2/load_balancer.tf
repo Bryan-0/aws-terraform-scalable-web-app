@@ -1,5 +1,5 @@
 resource "aws_alb" "web_app_alb" {
-  name            = "WebAppALB"
+  name            = "webappalb"
   internal        = false
   security_groups = [var.alb_security_group_id]
   subnets         = var.public_subnet_ids
