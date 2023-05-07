@@ -1,7 +1,15 @@
 .terraform/
+
+# Terraform state
 terraform.tfstate
 terraform.tfstate.backup
 backend.tf
 
+# TF Env variables
+dev.tfvars
+test.tfvars
+prod.tfvars
+
+# Misc
 docs/
 plan.png

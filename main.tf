@@ -51,3 +51,12 @@ module "iam" {
   source             = "./iam"
   web_app_bucket_arn = module.s3.web_app_bucket_arn
 }
+
+# Set up Domain Hosted Zone | DNS Records
+module "route53" {
+  source = "./route53"
+
+  web_domain      = var.web_domain
+  web_alb_dns     = module.ec2.alb_dns_name
+  web_alb_zone_id = module.ec2.alb_zone_id
+}
