@@ -1,5 +1,6 @@
 resource "aws_route53_zone" "web_app_hosted_zone" {
-  name = var.web_domain
+  name    = var.web_domain
+  comment = "Web App Hosted Zone managed by Terraform."
 }
 
 resource "aws_route53_record" "alb_record" {
