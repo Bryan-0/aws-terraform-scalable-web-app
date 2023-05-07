@@ -1,12 +1,12 @@
 # Scalable Web App Blueprint (AWS + Terraform)
 
-Infrastructure Design done by me :)
+Infrastructure Design
 
 ![image](https://user-images.githubusercontent.com/8051411/236645568-476b326f-15df-4a57-bdb5-a293b50b559c.png)
 
 Feel free to modify and adapt it to your needs, this is a purely practice project but it can be refined, enhanced and used in a production environment if needed.
 
-**Note**: The full infra hasn't been done yet, it is still a work in progress. 
+**Note: The full infra hasn't been done yet, it is still a work in progress.**
 
 ### Dependencies
 
