@@ -3,6 +3,8 @@
 # Terraform state
 terraform.tfstate
 terraform.tfstate.backup
+terraform.tfstate.*.backup
+.terraform.tfstate.lock.info
 backend.tf
 
 # TF Env variables

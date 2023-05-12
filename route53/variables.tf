@@ -7,3 +7,6 @@ variable "web_alb_dns" {
 variable "web_alb_zone_id" {
   type = string
 }
+variable "acm_arn" {
+  type = string
+}

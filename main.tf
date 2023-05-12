@@ -52,11 +52,27 @@ module "iam" {
   web_app_bucket_arn = module.s3.web_app_bucket_arn
 }
 
-# Set up Domain Hosted Zone | DNS Records
+# Set up DNS Records - (Must have a hosted zone already created)
 module "route53" {
   source = "./route53"
 
   web_domain      = var.web_domain
   web_alb_dns     = module.ec2.alb_dns_name
   web_alb_zone_id = module.ec2.alb_zone_id
+  acm_arn         = module.acm.acm_certificate_arn
+}
+
+# Set up SSL for our web app
+module "acm" {
+  source  = "terraform-aws-modules/acm/aws"
+  version = "~> 4.0"
+
+  domain_name = var.web_domain
+  zone_id     = module.route53.zone_id
+
+  wait_for_validation = true
+
+  tags = {
+    Name = var.web_domain
+  }
 }
