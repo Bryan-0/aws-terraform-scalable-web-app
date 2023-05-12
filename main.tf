@@ -67,6 +67,11 @@ module "acm" {
   source  = "terraform-aws-modules/acm/aws"
   version = "~> 4.0"
 
+  # The Certificate must be created in us-east-1, CloudFront only supports certificates created in that region.
+  providers = {
+    aws = aws.acm
+  }
+
   domain_name = var.web_domain
   zone_id     = module.route53.zone_id
 
