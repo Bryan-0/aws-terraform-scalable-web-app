@@ -6,7 +6,7 @@ Infrastructure Design
 
 Feel free to modify and adapt it to your needs, this is a purely practice project but it can be refined, enhanced and used in a production environment if needed.
 
-**Note: The full infra hasn't been done yet, it is still a work in progress.**
+**Note: The private subnet part hasn't been done yet, everything else is functional!**
 
 ### Dependencies
 
@@ -19,9 +19,20 @@ Feel free to modify and adapt it to your needs, this is a purely practice projec
 Once you've cloned this repo into your local computer, you will need to:
 
 - Configure your AWS credentials, run `aws configure`.
-- Make sure that the configured region is the desired.
+- Configure your environment variables with the following:
+(create a tfvars file e.g. `dev.tfvars`)
+```
+infra_region = "eu-west-1"
+web_domain = "example.com"
+environment = "dev"
+```
 - Run `terraform init` to initialize modules.
-- Run `terraform plan` to double-check if needed, also remember to check your configured region. (The default region on this repo is `eu-west-1`)
-- Run `terraform apply` and enjoy!
+- Run `terraform plan -var-file="dev.tfvars"` or simply `make tf-plan-dev` to double-check if needed, also remember to check your configured region.
+- Run `terraform apply -var-file="dev.tfvars"` or simply `make tf-apply-dev` and enjoy!
+
+Hosted web app:
+
+![image](https://github.com/Bryan-0/aws-terraform-scalable-web-app/assets/8051411/b7de75b9-50c8-46f8-8a77-f8c1f1897009)
+
 
 ### Thank you!
